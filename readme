@@ -1,0 +1,7 @@
+Script para Avaliação de Leiturabilidade e Correção Automática em Arquivos LaTex
+
+O presente trabalho propõe um script Python para avaliar a leiturabilidade de textos
+em formato LaTeX. Em complemento, o programa atua como um corretor que alerta o usuário 
+sobre erros comuns relacionados à organização do texto, objetividade, gramática,
+pontuação e digitação. Tal proposta visa uma ferramenta de apoio pedagógico que auxilie
+alunos e professores nas etapas de aprendizagem e avaliação.
