@@ -85,7 +85,7 @@ class Parser:
         p = texto.split('\n\n')
         f = lambda t: t != ''
         g = lambda t: t.replace('\n',' ').strip()
-        return list(map(g,filter(f,p)))
+        return list(filter(f,map(g,p)))
 
     def __get_frases(self, texto):
         frases = texto.split('.')
@@ -335,7 +335,6 @@ def main():
                 print('Forneça um arquivo .tex')
     else:
         print('Forneça um arquivo .tex ou um diretorio')
-
 
 if __name__ == '__main__':
     main()
