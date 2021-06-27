@@ -9,7 +9,7 @@ class Parser:
     MATCH_AUTOR               = re.compile(r"(\\author\s*{)(.*)(})")
     MATCH_SECAO               = re.compile(r"\\(sub)*section(\*|){(.*)}")
     MATCH_DOCUMENTO           = re.compile(r"(?<=\\begin{document})(.*\n+)*(?=\\end{document})")
-    MATCH_COMANDO             = re.compile(r"\\([A-z]*)({.*}|\s)")
+    MATCH_COMANDO             = re.compile(r"(\s|)\\([A-z]*)(\*|)({.*}|\s)")
     MATCH_COMENTARIO_LINHA    = re.compile(r"(^|(?<=[^\\]))%(.*)")
     MATCH_COMENTARIO_AMBIENTE = re.compile(r"(\\begin{comment})(.*\n+)*(\\end{comment})")
 
