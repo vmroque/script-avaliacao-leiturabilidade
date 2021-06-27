@@ -7,7 +7,7 @@ class Parser:
     MATCH_NOME_COMANDO        = re.compile(r"(?<=\\)([A-z]*)")
     MATCH_TITULO              = re.compile(r"(\\title\s*{)(.*)(})")
     MATCH_AUTOR               = re.compile(r"(\\author\s*{)(.*)(})")
-    MATCH_SECAO               = re.compile(r"\\(sub)*section\s*{(.*)}")
+    MATCH_SECAO               = re.compile(r"\\(sub)*section(\*|){(.*)}")
     MATCH_DOCUMENTO           = re.compile(r"(?<=\\begin{document})(.*\n+)*(?=\\end{document})")
     MATCH_COMANDO             = re.compile(r"\\([A-z]*)({.*}|\s)")
     MATCH_COMENTARIO_LINHA    = re.compile(r"(^|(?<=[^\\]))%(.*)")
@@ -24,7 +24,7 @@ class Parser:
         self.palavras     = []
         self.frases       = []
         try:
-            arq = open(arquivo)
+            arq = open(arquivo,encoding='iso8859-1')
             for linha in arq:
                 self.codigo_fonte += linha
             self.__parse()
