@@ -212,7 +212,7 @@ class Corretor:
     def __erro_pontuacao_titulos(self):
         secoes = self.documento.get_secoes()
         for s in secoes:
-            if s[-1] == '.' or s[-1] == ':':
+            if s != '' and s[-1] == '.' or s[-1] == ':':
                 return "Uso de ponto final ou dois pontos na secao '" + s + "'; "
         return ''
 
