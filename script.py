@@ -305,7 +305,6 @@ class FleschBR:
             return 'Muito Fácil (1º a 5º ano)'
 
 def analisar_arquivo(arq):
-    print(arq)
     p = Parser(arq)
     f = FleschBR(p)
     c = Corretor(p)
