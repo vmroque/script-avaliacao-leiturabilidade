@@ -304,12 +304,14 @@ class FleschBR:
         else:
             return 'Muito Fácil (1º a 5º ano)'
 
-def log(p):
+def analisar_arquivo(arq):
+    print(arq)
+    p = Parser(arq)
     f = FleschBR(p)
     c = Corretor(p)
     print('Arquivo: ' + p.get_arquivo())
-    print('Autor: ' + p.get_autor())
-    print('Título: ' + p.get_titulo())
+    print('Autor  : ' + p.get_autor())
+    print('Título : ' + p.get_titulo())
     cont = 1
     for i in f.indice_paragrafos():
         print('Leiturabilidade paragrafo {}: {:.2f} - {}'.format(cont,i,f.grau(i)))
@@ -317,24 +319,27 @@ def log(p):
     leit = f.indice(p.get_texto())
     print('Leiturabilidade geral: {:.2f} - {}'.format(leit,f.grau(leit)))
     print('Erros encontrados: ' + c.listar_erros())
+    print()
 
+def analisar_diretorio_recursivo(root):
+    for e in os.listdir(root):
+        x = os.path.join(root,e)
+        if os.path.isdir(x):
+            analisar_diretorio_recursivo(x)
+        elif e.endswith('.tex'):
+            analisar_arquivo(x)
 def main():
     if len(sys.argv) > 1:
         arg = sys.argv[1]
         if os.path.isdir(arg):
-            for f in os.listdir(arg):
-                if f.endswith('.tex'):
-                    p = Parser(os.path.join(arg,f))
-                    log(p)
-                    print()
-        else:
+            analisar_diretorio_recursivo(arg)
+        else: 
             if arg.endswith('.tex'):
-                p = Parser(arg)
-                log(p)
+                analisar_arquivo(arg)
             else:
-                print('Forneça um arquivo .tex')
+                print('Forneça um arquivo LaTeX (.tex)')
     else:
-        print('Forneça um arquivo .tex ou um diretorio')
+        print('Forneça um arquivo LaTeX ou um diretório')
 
 if __name__ == '__main__':
     main()
