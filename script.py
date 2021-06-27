@@ -296,7 +296,7 @@ class FleschBR:
         return r
 
     def grau(self, indice):
-        if indice >= 0 and indice < 25:
+        if indice < 25:
             return 'Muito Difícil (Ensino Superior)'
         elif indice >= 25 and indice < 50:
             return 'Difícil (Ensino Médio)'
